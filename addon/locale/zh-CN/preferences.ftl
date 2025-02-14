@@ -174,6 +174,8 @@ menu-sep-2 =
 
 ## 快捷键设置
 shortcut-setting = 快捷键设置
+shortcut-update-journal-info =
+    .label = 使用快捷键从easyScholar更新期刊信息（仅支持选择常规条目）:
 shortcut-title-sentence =
     .label = 使用快捷键设置题目大小写为句首字母大写:
 shortcut-publication-title-case =

@@ -650,6 +650,27 @@
     <label>
       <html:h2 data-l10n-id="shortcut-setting"></html:h2>
     </label>
+    <!-- 使用快捷键更新期刊信息 -->
+    <hbox align="center">
+      <checkbox
+        style="width: 400px"
+        id="zotero-prefpane-__addonRef__-shortcut-update-journal-info"
+        data-l10n-id="shortcut-update-journal-info"
+        native="true"
+        preference="extensions.zotero.__addonRef__.shortcut.update.journal.info"
+      />
+      <label value="Ctrl + "></label>
+      <html:input
+        type="text"
+        id="zotero-prefpane-__addonRef__-shortcut-input-update-journal-info"
+        value="J"
+        width="5"
+        preference="extensions.zotero.__addonRef__.shortcut.input.update.journal.info"
+        size="4"
+        style="margin-right: 15px"
+      >
+      </html:input>
+    </hbox>
     <!-- 题目改为句首字母大写 -->
     <hbox align="center">
       <checkbox

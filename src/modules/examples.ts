@@ -828,7 +828,7 @@ export class KeyExampleFactory {
         return undefined;
       }
     } catch (error) {
-      Zotero.debug("获  取自定义数据集期刊级别失败！" + error);
+      Zotero.debug("获取自定义数据集期刊级别失败！" + error);
     }
   }
 
@@ -1153,6 +1153,8 @@ export class KeyExampleFactory {
     // const cmdSmallerId = `${config.addonRef}-cmd-smaller`;
     // Register an event key for Alt+D 数据目录
     // 待使用新函数
+    const ifUpdateJournalInfo = getPref(`shortcut.update.journal.info`);
+    const keyUpdateJournalInfo = getPref(`shortcut.input.update.journal.info`);
     const ifTitleSentence = getPref(`shortcut.title.sentence`);
     const keyTitleSentence = getPref(`shortcut.input.title.sentence`);
     const ifPubTitleCase = getPref(`shortcut.publication.title.case`);
@@ -1169,13 +1171,34 @@ export class KeyExampleFactory {
       var keyControl = "control";
     }
 
+    // 从easyScholar更新期刊信息
+    if (ifUpdateJournalInfo) {
+      ztoolkit.Keyboard.register((event, { keyboard }) => {
+        if (!keyboard?.equals(`${keyControl},${keyUpdateJournalInfo}`)) {
+          return;
+        }
+        ztoolkit.log(`${ifUpdateJournalInfo}${keyUpdateJournalInfo}`);
+        // addon.hooks.onShortcuts("larger");
+        // HelperExampleFactory.progressWindow(`${ifProfileDir} ${keyProfileDir} `, 'success');
+        const itemID = Zotero_Tabs._tabs[Zotero_Tabs.selectedIndex].data.itemID;
+        // do nothing when trigger in the reader tab
+        if (itemID) {
+          return;
+        } else if (KeyExampleFactory.getSelectedItems()) {
+          KeyExampleFactory.setExtraItems();
+        } else {
+          return;
+        }
+      })
+    }
+
     // 题目大小写改为句首字母大小写
     if (ifTitleSentence) {
       ztoolkit.Keyboard.register((event, { keyboard }) => {
         if (!keyboard?.equals(`${keyControl},${keyTitleSentence}`)) {
           return;
         }
-        ztoolkit.log(`${ifPubTitleCase}${keyPubTitleCase}`);
+        ztoolkit.log(`${ifTitleSentence}${keyTitleSentence}`);
         // addon.hooks.onShortcuts("larger");
         // HelperExampleFactory.progressWindow(`${ifProfileDir} ${keyProfileDir} `, 'success');
         HelperExampleFactory.chanItemTitleCase();

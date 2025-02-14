@@ -173,6 +173,8 @@ menu-sep-2 =
 
 ## 快捷键设置
 shortcut-setting = Shortcut Settings
+shortcut-update-journal-info =
+    .label = Using shortcut for updating Journal Information from easyScholar (only supporting selected regular items):
 shortcut-title-sentence =
     .label = Using shortcut for changing title to sentence case:
 shortcut-publication-title-case =
