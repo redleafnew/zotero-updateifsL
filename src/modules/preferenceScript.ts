@@ -573,6 +573,25 @@ function bindPrefEvents() {
       UIExampleFactory.registerExtraColumn();
     });
 
+  // 从easyScholar更新期刊信息
+  addon.data
+    .prefs!.window.document.querySelector(
+      `#zotero-prefpane-${config.addonRef}-shortcut-update-journal-info`,
+    )
+    ?.addEventListener("command", (e) => {
+      ztoolkit.log(e);
+      KeyExampleFactory.registerShortcuts();
+    });
+  // 从easyScholar更新期刊信息快捷键
+  addon.data
+    .prefs!.window.document.querySelector(
+      `#zotero-prefpane-${config.addonRef}-shortcut-input-update-journal-info`,
+    )
+    ?.addEventListener("change", (e) => {
+      ztoolkit.log(e);
+      KeyExampleFactory.registerShortcuts();
+    });
+
   // 题目改为句首字母大写
   addon.data
     .prefs!.window.document.querySelector(
